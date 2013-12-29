@@ -2,11 +2,11 @@ A JavaScript implementation of John Conway's *Game of Life* Simulation
 ---
 
 ## summary
-see: http://en.wikipedia.org/wiki/Conway's_Game_of_Life
-demo: http://jwije.com/gol/index.html
-
 This is a HTML5/Cavas reproduction of Conway's famous Game of Life experiment. The logic is all handled in JS whilst the results
 are outputed to a HTML5 cavas element for viewing.
+ 
+For some background information see: http://en.wikipedia.org/wiki/Conway's_Game_of_Life
+Demo:
 
 
 ## setup 
