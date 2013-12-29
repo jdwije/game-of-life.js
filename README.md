@@ -1,5 +1,6 @@
-A JavaScript implementation of John Conway's *Game of Life* Simulation
+Game of Life [GOL]
 ---
+John Conway's famous 1970 cellular automation. Create some shapes, watch them evolve.
 
 ## summary
 see: http://en.wikipedia.org/wiki/Conway's_Game_of_Life
