@@ -10,7 +10,6 @@ see: http://en.wikipedia.org/wiki/Conway's_Game_of_Life
 This is a HTML5/Cavas reproduction of Conway's famous Game of Life experiment. The logic is all handled in JS whilst the results
 are outputed to a HTML5 cavas element for viewing.
 
-
 ## setup 
 This script requires jQuery v1.10+, and browser support for HTML5 canvas to work.
 
@@ -43,9 +42,8 @@ and stop it with
 
 	mySim.dumpData();
 	
-
 # known issues
-The original GOL simulation was implimented on an infinite canvas space. This simply is not practical in a graphical browser environment, as such this reporduction limits the available 2d space that the simulation can operate in so as to save CPU and memory usage. Don't worry, you still get to see all the pretty shapes :)
+The original GOL simulation was in an infinite canvas space. This simply is not practical in a graphical browser environment, as such this reporduction limits the available 2d space that the simulation can operate in. Don't worry, you still get to see all the pretty shapes :)
 
 
 
