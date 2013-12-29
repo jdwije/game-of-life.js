@@ -26,16 +26,20 @@ and stop it with
 
 ## api
 **start:** begins the simulation. usage
+
 	mySim.start();
 
 **stop:** stops running the simulation, does not destroy data and allows for resuming. usage
+
 	mySim.stop();
 
 **rebuild:** resets the simulation and feeds it a new seed matrix. usage
+
 	mySim.rebuild();
 
 **dumpData:** returns a CSV structure of the current simulation state. usage
-	mySim.save();
+
+	mySim.dumpData();
 	
 
 # known issues
