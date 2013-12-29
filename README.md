@@ -1,7 +1,7 @@
 A JavaScript implementation of John Conway's *Game of Life* Simulation
 ---
 
-# summary
+## summary
 see: http://en.wikipedia.org/wiki/Conway's_Game_of_Life
 demo: http://jwije.com/gol/index.html
 
@@ -9,12 +9,23 @@ This is a HTML5/Cavas reproduction of Conway's famous Game of Life experiment. T
 are outputed to a HTML5 cavas element for viewing.
 
 
-# setup & usage
-Initialisation is easy. Your HTML markup will require a canvas element to output to after which the simulation object is initialised with the following bit of code.
+## setup 
+This script requires jQuery v1.10+, and browser support for HTML5 canvas to work.
 
+Initialisation is easy. Your HTML markup will require a canvas element to output to so be sure to include one somewhere in your UI.The simulation is initialised with the following bit of code.
 
-A succesfully initialised Game of Life (GOL) simulation presents the following API:
+    var mySim = new GOL( settings... );
 
+You can begin your simulation by calling
+
+	mySim.run();
+
+and stop it with
+
+	mySim.stop()
+
+## API
+Initialised
 start:
 
 stop:
