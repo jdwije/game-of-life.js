@@ -24,19 +24,19 @@ and stop it with
 
 	mySim.stop()
 
-## API
-Initialised
-start:
+## api
+**start:** begins the simulation. usage
+	mySim.start();
 
-stop:
+**stop:** stops running the simulation, does not destroy data and allows for resuming. usage
+	mySim.stop();
 
-rebuild:
+**rebuild:** resets the simulation and feeds it a new seed matrix. usage
+	mySim.rebuild();
 
-save:
-
-dumpData:
-
-getStats:
+**dumpData:** returns a CSV structure of the current simulation state. usage
+	mySim.save();
+	
 
 # known issues
 The original GOL simulation was implimented on an infinite canvas space. This simply is not practical in a graphical browser environment, as such this reporduction limits the available 2d space that the simulation can operate in so as to save CPU and memory usage. Don't worry, you still get to see all the pretty shapes :)
