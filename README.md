@@ -1,5 +1,5 @@
 A JavaScript implementation of John Conway's *Game of Life* Simulation
------
+---
 
 # summary
 see: http://en.wikipedia.org/wiki/Conway's_Game_of_Life
