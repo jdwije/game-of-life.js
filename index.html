@@ -55,8 +55,7 @@
  		<div class='ctrl'> 
  			<a href="#" class='btn btn-green' id='start'>Start</a> 
 			<a href="#" class='btn btn-red' id='stop'>Stop</a> 
- 			<a href="#" class='btn' id='create'>Create</a> 
- 			<a href="#" class='btn' id="save">Save</a> 
+ 			<a href="#" class='btn' id='create'>Rebuild</a> 
  		</div>
 
 	  	<!-- the canvas element -->
@@ -76,8 +75,8 @@
 			// setup simulator
 			SIM = new GOL({
 				'canvas' : 'canvas',
-				'width' : 1000,
-				'height' : 1000,
+				'width' : 300,
+				'height' : 300,
 				'seed_density' : 20
 			});
 
@@ -85,9 +84,7 @@
 			$("#start").click( SIM.run );
 			$("#stop").click( SIM.pause );
 			$("#create").click( SIM.rebuild );
-			$("#save").click( function () {
-				$("#savebox").text( SIM.dumpData() );
-			} );
+
 		});
 	</script>
 

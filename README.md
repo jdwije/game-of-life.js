@@ -1,12 +1,11 @@
-A JavaScript implementation of John Conway's *Game of Life* Simulation
+Game of Life [GOL]
 ---
+John Conway's famous 1970 cellular automation. Create some shapes, watch them evolve.
 
 ## summary
-This is a HTML5/Cavas reproduction of Conway's famous Game of Life experiment. The logic is all handled in JS whilst the results
-are outputed to a HTML5 cavas element for viewing.
- 
-For some background information see: http://en.wikipedia.org/wiki/Conway's_Game_of_Life
-Demo:
+see: http://en.wikipedia.org/wiki/Conway's_Game_of_Life
+
+**demo:** http://jdwije.github.io/gol
 
 
 ## setup 
@@ -41,9 +40,8 @@ and stop it with
 
 	mySim.dumpData();
 	
-
 # known issues
-The original GOL simulation was implimented on an infinite canvas space. This simply is not practical in a graphical browser environment, as such this reporduction limits the available 2d space that the simulation can operate in so as to save CPU and memory usage. Don't worry, you still get to see all the pretty shapes :)
+The original GOL simulation was in an infinite canvas space. This simply is not practical in a graphical browser environment, as such this reporduction limits the available 2d space that the simulation can operate in. Don't worry, you still get to see all the pretty shapes :)
 
 
 
