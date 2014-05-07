@@ -1,12 +1,23 @@
 /**
 *
 *	This simulation runs John Conway *Game of Life* simulation.
-*	It uses HTML5 Cavas for simulation output. Some info on this:
-*		- max dimension, 8192px
+*	It uses HTML5 Canvas for output and web workers to handle parallel computation. 
 *
-*	DEPENDENCIES: jQuery, HTML5.
-* 
+*	DEPENDENCIES: HTML5.
+*
+*       Change Log
+*
+*       0.0.2
+*        REMOVED: jQuery dependencies
+*        ADDED: Parallel computaion for faster processing of simulation        
+*                
+*
+*       0.0.1
+*        ADDED: Source code and supporting files to repositiory.
+*
 ****/
+
+
 
 var GOL = function ( config ) {
 	// set ECMA Strict mode
