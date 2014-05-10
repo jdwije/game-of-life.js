@@ -2,7 +2,7 @@ Game of Life [GOL]
 ---
 John Conway's famous 1970 cellular automation. Create some shapes, watch them evolve.
 
-**[DEMO](http://jdwije.github.io/gol)**
+**[DEMO](http://jdwije.github.io/game-of-life.js/)**
 
 
 This is a reproduction of Conway's famous Game of Life simulation. It currently supports HTML and HTML5 Canvas canvas output - maybe I will add desktop support through GNUGuile or NodeJS at a later date.
