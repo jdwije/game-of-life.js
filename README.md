@@ -2,49 +2,114 @@ Game of Life [GOL]
 ---
 John Conway's famous 1970 cellular automation. Create some shapes, watch them evolve.
 
-## summary
-see: http://en.wikipedia.org/wiki/Conway's_Game_of_Life
-
 **demo:** http://jdwije.github.io/gol
 
-This is a HTML5/Cavas reproduction of Conway's famous Game of Life experiment. The logic is all handled in JS whilst the results
-are outputed to a HTML5 cavas element for viewing.
+This is a reproduction of Conway's famous Game of Life simulation. It currently supports HTML and HTML5 Canvas canvas output - maybe I will add desktop support through GNUGuile or NodeJS at a later date.
 
-## setup 
-This script requires jQuery v1.10+, and browser support for HTML5 canvas to work.
+For more information on the original experiment see here http://en.wikipedia.org/wiki/Conway's_Game_of_Life.
 
-Initialisation is easy. Your HTML markup will require a canvas element to output to so be sure to include one somewhere in your UI.The simulation is initialised with the following bit of code.
+## Setup In-Browser
+For clarities sake I will talk you through how I setup the demo page for this script available here [].
 
-    var mySim = new GOL( settings... );
+First include the ```dist/game-of-life-min.js``` in your webpages' body.
+
+```
+	<script type="text/javascript" src="../dist/game-of-life.js"></script>
+```
+
+Initialisation is easy however this script supports two output types in browser and we need to choose one. For this example we will setup both vanilla HTML and HTML5 canvas output. In your webpage below where you linked the above script insert something like this.
+
+```
+<script type="text/javascript">
+		var HTML, HTML5;
+		// wrap init in window load funtion
+		$(window).load(function () {
+			// setup simulator for canvas output.
+			simHTML5 = new GolController({
+				'canvas' : 'canvas',
+				'width' : 100,
+				'height' : 100,
+				'seed_density' : 20
+			}),
+			// setup simulator for HTML output. note the 'display' : 'HTML' property.
+		    simHTML =  new GolController({
+				'canvas' : 'pre',
+				'selector' : 'pre',
+		        'display' : 'HTML',
+				'width' : 70,
+				'height' : 70,
+				'seed_density' : 30
+			});
+		});
+	</script>
+```
+For a full list of the available settings see ```src/objects/gol-controller.js``` and look at the ```configDefaults``` variable.
+
+
+You will need to link the controller we just intialised to a user interface using the functions it provides.
 
 You can begin your simulation by calling
 
-	mySim.run();
+```
+	simHTML.run();
+```
 
 and stop it with
 
-	mySim.stop()
+```
+	simHTML5.stop()
+```
 
-## api
-**start:** begins the simulation. usage
+The script doesn't make you use any particular frameworks to build up your UI with. It will work with jQuery, Dojo, etc. The example uses the jQuery ```click()``` event functions to bind some buttons to the controllers' API.
 
+## API
+#### start
+*begins the simulation.*
+Usage:
+
+```
 	mySim.start();
+```
 
-**stop:** stops running the simulation, does not destroy data and allows for resuming. usage
+#### suspend
+*suspends a running simulation, does not destroy data and allows for resuming.*
+Usage:
 
-	mySim.stop();
+```
+	mySim.suspend();
+```
 
-**rebuild:** resets the simulation and feeds it a new seed matrix. usage
+#### rebuild
+*resets the simulation and feeds it a new seed matrix.*
+Usage:
 
+```
 	mySim.rebuild();
-
-**dumpData:** returns a CSV structure of the current simulation state. usage
-
-	mySim.dumpData();
+```
 	
-# known issues
-The original GOL simulation was in an infinite canvas space. This simply is not practical in a graphical browser environment, as such this reporduction limits the available 2d space that the simulation can operate in. Don't worry, you still get to see all the pretty shapes :)
+## Known Issues
+The original GOL simulation was run in a pottentially infinite canvas space. This is not practical in a graphical browser environment as there are hard limits on resources, as such the engine in this software enforces a height/width limit for it's calculations.
 
+The HTML5 canvas display adapter suffers from some performance issues.
 
+There seems to be a lot of idle time in the program. I might split this up in future versions by refactoring in more asynchronous methods or threaded processes when available.
 
+----
+
+## Change Log
+A history of changes from version to version.
+
+#### 0.1.0
+REMOVED: jQuery dependencies dropped in favour of vanilla JS.
+EDITED: Refactored code to be more modular.
+ADDED: Grunt build system.
+EDITIED: Directory/source code structure to support the project better and make things clearer.
+
+#### 0.0.1
+ADDED: beta source code and supporting files to repositiory.
+
+---
+
+## License
+MIT licensed. See LICENSE.md file distributed with this source code.
 

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <title>Gol Engine Test Environment</title>
+  <script type="text/javascript" src="../dist/game-of-life.js"></script>
+
+<style type="text/css">
+
+  * {
+  padding: 0;
+  margin: 0;
+  }
+  
+
+.alive {
+ color: #FF8080;
+}
+
+.blue {
+
+color: #3399FF;
+}
+  body {
+  font-size: 7px;
+  background: #333;
+  color:green;
+  width:100%;
+height:auto;
+  overflow:scroll;
+  }
+</style>
+ </head>
+ <body>
+
+<pre></pre>
+
+<script type="text/javascript">
+  var 
+  width =  100,
+  height =  50,
+
+  eng = new GolEngine({
+  width: width,
+  height: height,
+  master_timer : 300,
+  seed_density: 50
+  });
+
+  
+
+iteration = 0;
+
+String.prototype.replaceAt=function(index, character) {
+    return this.substr(0, index) + character + this.substr(index+character.length);
+
+}
+  strEffect = function ( str ) {
+      var name = "<span class='blue'> Jason Wijegooneratne </span>",
+          aboutPage = "<span class='blue'> about </span>",
+          codePage = "<span class='blue'> code </span>",
+          position = 20,
+          lineSpacing = 10,
+          itemIt = 0,
+          items = [ name, aboutPage, codePage ];
+          
+          for ( itemIt = 0; itemIt < items.length; itemIt++ ) {
+              str = str.replaceAt( (lineSpacing * width * (itemIt + 1) + position), items[itemIt] );
+          }
+		str = str.replace(/1/g, "<span class='alive'>1</span>");
+				     
+				     return str;
+  };
+
+  eng.run( function ( d ) {
+  
+
+  document.getElementsByTagName('pre')[0].innerHTML = strEffect( eng.dumpDataString(" ") );
+  
+  
+  iteration++;
+  });
+
+
+</script>
+ </body>
+</html>

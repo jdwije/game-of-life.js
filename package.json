@@ -1,0 +1,13 @@
+{
+    "name": "game-of-life",
+    "version": "0.0.2",
+    "devDependencies": {
+	"grunt": "~0.4.2",
+	"grunt-contrib-jshint": "~0.6.3",
+	"grunt-contrib-uglify": "~0.2.2",
+	"grunt-contrib-qunit": "~0.4.0",
+	"grunt-contrib-concat": "~0.4.0",
+	"grunt-contrib-jshint": "~0.6.3",
+	"grunt-contrib-watch": "~0.6.0"
+    }
+}
