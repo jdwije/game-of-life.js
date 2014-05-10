@@ -113,7 +113,9 @@ grunt --force
 
 After you can make a build you can edit the source code files in the ```src/``` directory. The ```src/objects``` directory contains all the core JS objects you will be wanting to edit and prototype.
 
-The ```tests``` directory contains some modularised in browser tests of the various objects that might be useful.
+The ```tests``` directory contains some modularized in browser tests of the various objects that might prove useful.
+
+Send me pull requests to contribute back upstream.
 
 ## Known Issues
 The original GOL simulation was run in a pottentially infinite canvas space. This is not practical in a graphical browser environment as there are hard limits on resources, as such the engine in this software enforces a height/width limit for it's calculations.
