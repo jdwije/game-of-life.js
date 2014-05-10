@@ -165,24 +165,6 @@ GolBase = function ( config ) {
  *	This simulation runs John Conway's *Game of Life* experiement in browser.
  *	It uses HTML5 canvas for output and web workers to handle parallel computation.
  *       I built this for fun, but also partly to see how far you could push browser performance.
- *
- *       - www
- *
- *	BROWSER DEPENDENCIES:
- *        Canvas, Web Workers.
- *
- *       LICENSE:
- *        MIT licensed. See LICENSE.md file distributed with this source code.
- *
- *       CHANGE LOG:
- *        0.0.2
- *         REPLACED: jQuery dependencies in favour of vanilla JS.
- *         EDITED: Refactored code to be more modular.
- *         ADDED: Support for parallel compution using web workers.
- *         ADDED: Basic instrumentation to better benchmark performace of specific functions
- *
- *        0.0.1
- *         ADDED: Source code and supporting files to repositiory.
  ****/
 
 
