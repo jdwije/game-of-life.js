@@ -113,3 +113,6 @@ ADDED: beta source code and supporting files to repositiory.
 ## License
 MIT licensed. See LICENSE.md file distributed with this source code.
 
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/jdwije/gol/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
