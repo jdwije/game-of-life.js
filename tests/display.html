@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <title>GOL Display Adapter Test</title>
+  <script type="text/javascript" src="../dist/game-of-life.js"></script>
+
+ </head>
+ <body>
+   <canvas id="canvas" height="200" width="200" />  
+
+
+
+<script type="text/javascript">
+height = 200;
+width = 200;
+  
+  display = new GolDisplay({
+  'height': height,
+  'width': width,
+  'colours' : {
+'foreground' : '#C2FF85',
+'background' : '#C2C2C2'
+}
+  });
+
+
+  var makeData = function ( h, w ) {
+       var y = 0, x = 0,
+       data = [], row;
+
+      for ( y = 0; y < h; y++ ) {
+         row = [];
+         for ( x = 0; x < w; x++ ) {
+           row.push( (Math.random() > 0.5 ? 1 : 0) );
+         }
+         data.push( row );
+      }
+      return data;
+  };
+
+		       testData = makeData( height, width );
+
+		       display.drawDisplay( testData );
+
+</script>
+
+ </body>
+</html>
