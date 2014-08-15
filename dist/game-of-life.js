@@ -254,6 +254,7 @@ GolDisplay = function ( config ) {
     defaultConfig = {
 	'width' : 300,
 	'height' : 300,
+	'scale' : 1,
 	'selector' : 'canvas',
 	'colours' : {
 	    background : "#FFFFFF",
@@ -268,9 +269,9 @@ GolDisplay = function ( config ) {
      */
     r.setupDisplay = function () {
 	canvasObject = document.getElementById( config.selector );
-	canvasObject.style.width = config.width;
-	canvasObject.style.height = config.height;
-	ctx = canvas.getContext( "2d" );
+	canvasObject.style.width = parseInt(config.width * config.scale, 10) + "px";
+	canvasObject.style.height = parseInt(config.height * config.scale, 10) + "px";
+	ctx = canvasObject.getContext( "2d" );
     };
 
     
@@ -279,12 +280,14 @@ GolDisplay = function ( config ) {
      * @matrix (ARRAY): The matrix of pixel data represented as a multi-dimensional array structure
      */
     a.drawDisplay = function ( matrix ) {
-	var
-	renderMatrixSegment = function ( segment, offset ) {
+
+	var renderMatrixSegment = function ( segment ) {
 	    var
 	    y_it,
 	    x_it,
-	    square;
+	    square,
+	    x_axis_scaled,
+	    y_axis_scaled;
 
 	    // loop y
 	    for ( y_it = 0; y_it < segment.length; y_it++ ) {
@@ -301,17 +304,20 @@ GolDisplay = function ( config ) {
 		    else {
 			// dead
 			ctx.fillStyle = config.colours.background;
-		    }
-
-		    ctx.fillRect( x_it, y_it + offset, 1, 1 );
-
+		    }		    
+		    
+		    // if we are scaling calculate the scaled coordiantes of 
+		    // this position in the matrix
+		    x_axis_scaled = x_it * config.scale;
+  		    y_axis_scaled =  y_it * config.scale;
+		    ctx.fillRect( x_axis_scaled, y_axis_scaled, config.scale, config.scale );
 		}	
 
 	    }
 	    return segment;
 	};
 
-	renderMatrixSegment( matrix, 0 );
+	renderMatrixSegment( matrix );
 	
     };
     
