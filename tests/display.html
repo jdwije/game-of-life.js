@@ -7,18 +7,20 @@
 
  </head>
  <body>
-   <canvas id="canvas" height="200" width="200" />  
+   <canvas id="canvas"  />  
 
 
 
 <script type="text/javascript">
-height = 200;
-width = 200;
+height = 50;
+width = 90;
+scale = 5;
   
-  display = new GolDisplay({
-  'height': height,
-  'width': width,
-  'colours' : {
+display = new GolDisplay({
+'height': height,
+'width': width,
+'scale': scale,
+'colours' : {
 'foreground' : '#C2FF85',
 'background' : '#C2C2C2'
 }
@@ -39,7 +41,7 @@ width = 200;
       return data;
   };
 
-		       testData = makeData( height, width );
+		       testData = makeData( height, width);
 
 		       display.drawDisplay( testData );
 
