@@ -117,7 +117,7 @@ GolEngine = function ( config ) {
      */
     r.simLoopStart = function ( callback ) {
 	r.setObjectActive();
-	
+	console.log(matrix);
 	simulationTimeout = setInterval( function () {
 	    r.simStepForward();
 	    callback( matrix );

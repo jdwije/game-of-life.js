@@ -7,9 +7,7 @@
 
 
 GolController = function ( config ) {
-    // set ECMA Strict mode
     "use strict";
-    // declare vars
     var 
     // restricted and available APIs
     r = {}, 
@@ -28,27 +26,28 @@ GolController = function ( config ) {
 	'seed_density' : 25
     },
     // the GOL Engine & Display objects. A 'self' reference to 'this' object.
-    engine,
-    display,
-    self = this;
+    _self = this;
+    r.engine = null;
+    r.display = null;
+
 
     /***********************
      ** AVAILABLE METHODS **
      ***********************/
     
-    // call engine to run passing it the draw method of the display adapter
+    // call r.engine to run passing it the draw method of the display adapter
     a.run  = function () {
-	engine.run( display.drawDisplay );
+	r.engine.run( r.display.drawDisplay );
     };
 
     // pauses execution of the simulation. does not clear any data.
     a.pause = function () {
-	engine.suspend();
+	r.engine.suspend();
     };
 
     // resets the simulation and rebuilds the seed matrix.
     a.rebuild = function () {
-	engine.rebuild();
+	r.engine.rebuild();
     };
 
     /***********************
@@ -56,9 +55,9 @@ GolController = function ( config ) {
      ************************/
     
     r.init = function () {
-	config = self.setConfig( defaultConfig, config );
-	engine = new GolEngine(config);
-	display = eval("new GolDisplay" + config.display + "(" + JSON.stringify(config) +  ");");
+	config = _self.setConfig( defaultConfig, config );
+	r.engine = new GolEngine(config);
+	r.display = eval("new GolDisplay" + config.display + "(" + JSON.stringify(config) +  ");");
     };
 
     r.init();

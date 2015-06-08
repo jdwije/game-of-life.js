@@ -14,7 +14,7 @@
 GolDisplay = function ( config ) {
     "use strict";
     var a = {}, r = {},
-    self = this,
+    _self = this,
     defaultConfig = {
 	'width' : 300,
 	'height' : 300,
@@ -24,18 +24,19 @@ GolDisplay = function ( config ) {
 	    background : "#FFFFFF",
 	    foreground : "#C2FF85"
 	}
-    },
-    canvasObject = null,
-    ctx = null;
+    };
+
+    r.canvasObject = null;
+    r.ctx = null;
 
     /**
      * Sets up the html canvas element and performs all required JS loading of it.
      */
     r.setupDisplay = function () {
-	canvasObject = document.getElementById( config.selector );
-	canvasObject.style.width = parseInt(config.width * config.scale, 10) + "px";
-	canvasObject.style.height = parseInt(config.height * config.scale, 10) + "px";
-	ctx = canvasObject.getContext( "2d" );
+	r.canvasObject = document.getElementById( config.selector );
+	r.canvasObject.width = parseInt(config.width * config.scale, 10);
+	r.canvasObject.height = parseInt(config.height * config.scale, 10);
+	r.ctx = r.canvasObject.getContext( "2d" );
     };
 
     
@@ -63,18 +64,18 @@ GolDisplay = function ( config ) {
 		    // filter square state and set colour
 		    if ( square > 0 ) {
 			// alive
-			ctx.fillStyle = config.colours.foreground;
+			r.ctx.fillStyle = config.colours.foreground;
 		    }
 		    else {
 			// dead
-			ctx.fillStyle = config.colours.background;
+			r.ctx.fillStyle = config.colours.background;
 		    }		    
 		    
 		    // if we are scaling calculate the scaled coordiantes of 
 		    // this position in the matrix
 		    x_axis_scaled = x_it * config.scale;
   		    y_axis_scaled =  y_it * config.scale;
-		    ctx.fillRect( x_axis_scaled, y_axis_scaled, config.scale, config.scale );
+		    r.ctx.fillRect( x_axis_scaled, y_axis_scaled, config.scale, config.scale );
 		}	
 
 	    }
@@ -89,7 +90,8 @@ GolDisplay = function ( config ) {
      * This controller init function. sets up default config and the display.
      */
     r.init = function () {
-	config = self.setConfig( defaultConfig, config );
+	config = _self.setConfig( defaultConfig, config );
+	console.log(config);
 	r.setupDisplay();
     };
     

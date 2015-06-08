@@ -14,14 +14,14 @@
 
 GolBase = function ( config ) {
     var a = {}, r = {},
-    self = this,
+    _self = this,
     defaultConfig = {
 	max_processes : 4,
 	computation_method : 'asynchronous'
     },
     config = config || {};
 
-   
+    
     r.spawnAsyncProcess = function ( data, offset, fn, bubbleCallback ) {	
 	fn( data, offset );
     };
@@ -169,9 +169,7 @@ GolBase = function ( config ) {
 
 
 GolController = function ( config ) {
-    // set ECMA Strict mode
     "use strict";
-    // declare vars
     var 
     // restricted and available APIs
     r = {}, 
@@ -190,27 +188,28 @@ GolController = function ( config ) {
 	'seed_density' : 25
     },
     // the GOL Engine & Display objects. A 'self' reference to 'this' object.
-    engine,
-    display,
-    self = this;
+    _self = this;
+    r.engine = null;
+    r.display = null;
+
 
     /***********************
      ** AVAILABLE METHODS **
      ***********************/
     
-    // call engine to run passing it the draw method of the display adapter
+    // call r.engine to run passing it the draw method of the display adapter
     a.run  = function () {
-	engine.run( display.drawDisplay );
+	r.engine.run( r.display.drawDisplay );
     };
 
     // pauses execution of the simulation. does not clear any data.
     a.pause = function () {
-	engine.suspend();
+	r.engine.suspend();
     };
 
     // resets the simulation and rebuilds the seed matrix.
     a.rebuild = function () {
-	engine.rebuild();
+	r.engine.rebuild();
     };
 
     /***********************
@@ -218,9 +217,9 @@ GolController = function ( config ) {
      ************************/
     
     r.init = function () {
-	config = self.setConfig( defaultConfig, config );
-	engine = new GolEngine(config);
-	display = eval("new GolDisplay" + config.display + "(" + JSON.stringify(config) +  ");");
+	config = _self.setConfig( defaultConfig, config );
+	r.engine = new GolEngine(config);
+	r.display = eval("new GolDisplay" + config.display + "(" + JSON.stringify(config) +  ");");
     };
 
     r.init();
@@ -250,7 +249,7 @@ GolController.prototype = new GolBase();
 GolDisplay = function ( config ) {
     "use strict";
     var a = {}, r = {},
-    self = this,
+    _self = this,
     defaultConfig = {
 	'width' : 300,
 	'height' : 300,
@@ -260,18 +259,19 @@ GolDisplay = function ( config ) {
 	    background : "#FFFFFF",
 	    foreground : "#C2FF85"
 	}
-    },
-    canvasObject = null,
-    ctx = null;
+    };
+
+    r.canvasObject = null;
+    r.ctx = null;
 
     /**
      * Sets up the html canvas element and performs all required JS loading of it.
      */
     r.setupDisplay = function () {
-	canvasObject = document.getElementById( config.selector );
-	canvasObject.style.width = parseInt(config.width * config.scale, 10) + "px";
-	canvasObject.style.height = parseInt(config.height * config.scale, 10) + "px";
-	ctx = canvasObject.getContext( "2d" );
+	r.canvasObject = document.getElementById( config.selector );
+	r.canvasObject.width = parseInt(config.width * config.scale, 10);
+	r.canvasObject.height = parseInt(config.height * config.scale, 10);
+	r.ctx = r.canvasObject.getContext( "2d" );
     };
 
     
@@ -299,18 +299,18 @@ GolDisplay = function ( config ) {
 		    // filter square state and set colour
 		    if ( square > 0 ) {
 			// alive
-			ctx.fillStyle = config.colours.foreground;
+			r.ctx.fillStyle = config.colours.foreground;
 		    }
 		    else {
 			// dead
-			ctx.fillStyle = config.colours.background;
+			r.ctx.fillStyle = config.colours.background;
 		    }		    
 		    
 		    // if we are scaling calculate the scaled coordiantes of 
 		    // this position in the matrix
 		    x_axis_scaled = x_it * config.scale;
   		    y_axis_scaled =  y_it * config.scale;
-		    ctx.fillRect( x_axis_scaled, y_axis_scaled, config.scale, config.scale );
+		    r.ctx.fillRect( x_axis_scaled, y_axis_scaled, config.scale, config.scale );
 		}	
 
 	    }
@@ -325,7 +325,8 @@ GolDisplay = function ( config ) {
      * This controller init function. sets up default config and the display.
      */
     r.init = function () {
-	config = self.setConfig( defaultConfig, config );
+	config = _self.setConfig( defaultConfig, config );
+	console.log(config);
 	r.setupDisplay();
     };
     
@@ -540,7 +541,7 @@ GolEngine = function ( config ) {
      */
     r.simLoopStart = function ( callback ) {
 	r.setObjectActive();
-	
+	console.log(matrix);
 	simulationTimeout = setInterval( function () {
 	    r.simStepForward();
 	    callback( matrix );

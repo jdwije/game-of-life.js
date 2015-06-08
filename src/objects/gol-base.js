@@ -14,14 +14,14 @@
 
 GolBase = function ( config ) {
     var a = {}, r = {},
-    self = this,
+    _self = this,
     defaultConfig = {
 	max_processes : 4,
 	computation_method : 'asynchronous'
     },
     config = config || {};
 
-   
+    
     r.spawnAsyncProcess = function ( data, offset, fn, bubbleCallback ) {	
 	fn( data, offset );
     };
